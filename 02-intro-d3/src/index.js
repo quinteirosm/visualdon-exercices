@@ -31,22 +31,20 @@ let c3 = circlesvg
             .attr('cx', '300px')
             .attr('cy', '250px')
             .on('click', function(){
-                selectAll('#circleContainer>svg')
-                .style('display','block')
-                .style('margin', 'auto')
+                selectAll('circle')
+                .attr('cx','200')
             });;
 
 let text = selectAll("circle")
-            .append("text");
+            .append("label")
+            .append(text)
 
 let dataContainer = select("body")
                     .append('div')
                     .attr("id", "dataContainer")
                     .append("svg")
-                    .style('display','flex')
-                    .style('align-self','flex-end')
                     .attr("width", width)
-                    .attr("height", '100px')
+                    .attr("height", height)
 
 let datasetShow = select("#dataContainer>svg")
                 .selectAll('rect')
@@ -54,6 +52,9 @@ let datasetShow = select("#dataContainer>svg")
                 .join("rect")
                 .attr('x', function(d,i){
                     return i*20;
+                })
+                .attr('y', function(d,i){
+                    return height-dataset[i];
                 })
                 .attr('width', '20px')
                 .attr('height', function(d,i){
